@@ -10,5 +10,6 @@
 
 git clone https://github.com/Leo-Jo-My/luci-theme-opentomato.git package/lean/luci-theme-opentomato
 cd openwrt
+cd lede
 ./scripts/feeds update -a 
 ./scripts/feeds install -a
