@@ -10,3 +10,6 @@
 git clone https://github.com/Leo-Jo-My/luci-theme-opentomato.git package/lean/luci-theme-opentomato
 ./scripts/feeds update -a 
 ./scripts/feeds install -a
+
+cat >> .config <<EOF
+CONFIG_PACKAGE_luci-theme-opentomato-master=y
