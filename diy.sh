@@ -7,8 +7,8 @@
 #=================================================
 # Modify default IP
 #sed -i 's/192.168.1.1/192.168.50.5/g' package/base-files/files/bin/config_generate
-
-git clone https://github.com/Leo-Jo-My/luci-theme-opentomato.git package/lean/luci-theme-opentomato
+mkdir package/lean
+git clone https://github.com/Leo-Jo-My/luci-theme-opentomato package/lean/luci-theme-opentomato
 
 ./scripts/feeds update -a 
 ./scripts/feeds install -a
