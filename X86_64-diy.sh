@@ -13,3 +13,4 @@ git clone https://github.com/Leo-Jo-My/luci-theme-opentomato.git package/lean/lu
 
 cat >> .config <<EOF
 CONFIG_PACKAGE_luci-theme-opentomato-master=y
+EOF
