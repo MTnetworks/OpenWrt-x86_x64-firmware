@@ -17,7 +17,7 @@ on:
     paths:
       - 'ying.config'
   schedule:
-    - cron: 0 4 * * 5
+    - cron: 0 4 * * ?
   watch:
     types: started
 
