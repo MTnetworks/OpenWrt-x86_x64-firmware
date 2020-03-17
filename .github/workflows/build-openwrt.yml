@@ -70,37 +70,12 @@ jobs:
         ./scripts/feeds update -a
         ./scripts/feeds install -a
         ./scripts/feeds install -a      
-        
-#    - name: Update luci-app-adguardhome 更新adguardhome插件源码
-#      run: |
-#        cd openwrt/package 
-#        git clone https://github.com/rufengsuixing/luci-app-adguardhome.git adguard        
-        
+              
     - name: Update lienol-package 更新lienol大插件源码
       working-directory: ./openwrt
       run: |
-        git clone https://github.com/Lienol/openwrt-package package/lienol        
-        git clone https://github.com/rufengsuixing/luci-app-adguardhome.git package/adguard                   
-  
-#    - name: config feeds 配置package源码
-#     run: |
-#       cd openwrt
-#       ./scripts/feeds clean
-#       ./scripts/feeds update -a
-#       rm -rf feeds/lienol/lienol/ipt2socks
-#       rm -rf feeds/lienol/lienol/shadowsocksr-libev
-#       rm -rf feeds/lienol/lienol/pdnsd-alt
-#       rm -rf feeds/lienol/package/verysync
-#        rm -rf feeds/lienol/lienol/luci-app-verysync
-#        rm -rf package/lean/kcptun
-#        rm -rf package/lean/trojan
-#        rm -rf package/lean/v2ray
-#        rm -rf package/lean/luci-app-kodexplorer
-#        rm -rf package/lean/luci-app-pppoe-relay
-#        rm -rf package/lean/luci-app-pptp-server
-#        rm -rf package/lean/luci-app-v2ray-server
-#        ./scripts/feeds install -a
-      
+        git clone https://github.com/Leo-Jo-My/luci-theme-opentomato.git package/lean/luci-theme-opentomato                   
+     
     - name: Load custom configuration 载入自定义配置
       run: |
         [ -e files ] && mv files openwrt/files
