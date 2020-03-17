@@ -10,9 +10,12 @@
 name: Build OpenWrt
 #==========================
 env:
+  # 在这里指定你的OpenWrt的仓库地址URL和分支
   REPO_URL: https://github.com/coolsnowwolf/lede
   REPO_BRANCH: master
+  # 在这里指定你的配置文件名
   CONFIG_FILE: .config
+  # 编译前运行的脚本
   DIY_SH: diy.sh
   FREE_UP_DISK: false
   SSH_ACTIONS: false
