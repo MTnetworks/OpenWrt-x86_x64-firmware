@@ -36,7 +36,7 @@ on:
   #==========================
   #取消下方注释 = 发布release就编译
   release:
-      types: [published]
+    types: [published]
   #==========================
   #取消下方注释 = 每天凌晨4点编译
   schedule:
