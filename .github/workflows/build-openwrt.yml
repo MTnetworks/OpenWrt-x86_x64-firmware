@@ -16,10 +16,10 @@ on:
       - master
     paths:
       - 'ying.config'
-#  schedule:
-#    - cron: 0 8 * * 5
-#  watch:
-#    types: [started]
+  schedule:
+    - cron: 0 8 * * 5
+  watch:
+    types: [started]
 
 env:
   REPO_URL: https://github.com/coolsnowwolf/lede
@@ -35,6 +35,7 @@ env:
 jobs:
   build:
     runs-on: ubuntu-latest
+    if: github.event.repository.owner.id == github.event.sender.id
 
     steps:
     - name: Checkout 检查系统
@@ -71,7 +72,7 @@ jobs:
         ./scripts/feeds install -a
         ./scripts/feeds install -a      
               
-    - name: Update lienol-package 更新lienol大插件源码
+    - name: Clone package 添加其他插件
       working-directory: ./openwrt
       run: |
         git clone https://github.com/Leo-Jo-My/luci-theme-opentomato.git package/lean/luci-theme-opentomato                   
