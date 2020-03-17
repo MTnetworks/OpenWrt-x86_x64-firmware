@@ -26,7 +26,7 @@ on:
   push:
     paths:
       #==========================
-      - "ying.config"
+      - ".config"
       # 改成和上方CONFIG_FILE 一样
       #==========================
     branches:
