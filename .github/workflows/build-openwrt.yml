@@ -117,10 +117,3 @@ jobs:
         with:
           name: OpenWrt_firmware openwrt固件
           path: ${{ env.FIRMWARE }}
-        
-      - name: Upload release
-        uses: yakuhzi/action-release@master
-        with:
-          file: openwrt/bin/targets/
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
