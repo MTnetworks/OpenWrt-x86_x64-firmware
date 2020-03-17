@@ -10,20 +10,15 @@
 name: Build OpenWrt
 #==========================
 env:
-  #==========================
-  # 编译前运行的脚本
-  DIY_SH: diy.sh
-  #==========================
-  # Specify here the OpenWrt Repo URL and Branch
-  # 在这里指定你的OpenWrt的仓库地址URL和分支
   REPO_URL: https://github.com/coolsnowwolf/lede
   REPO_BRANCH: master
-  #==========================
-  # Specify here your config file
-  # 在这里指定你的配置文件名
-  CONFIG_FILE: "ying.config"
-  #==========================
-  # GITEE_TOKEN: ${{ secrets.gitee }}
+  CONFIG_FILE: .config
+  DIY_SH: diy.sh
+  FREE_UP_DISK: false
+  SSH_ACTIONS: false
+  UPLOAD_BIN_DIR: false
+  UPLOAD_FIRMWARE: true
+  TZ: Asia/Shanghai
 on:
   push:
     paths:
@@ -89,31 +84,45 @@ jobs:
           ../$DIY_SH
           make defconfig
 
-      - name: Download package 下载插件资源
+      - name: SSH connection to Actions SSH登陆配置
+        uses: P3TERX/debugger-action@master
+        if: env.SSH_ACTIONS == 'true'
+
+      - name: Download package 下载插件源码
+        id: package
         run: |
-          cd openwrt && make download -j8
+          cd openwrt
+          make download -j8
+          find dl -size -1024c -exec ls -l {} \;
           find dl -size -1024c -exec rm -f {} \;
 
       - name: Build 开始编译
+        id: compile
         run: |
           cd openwrt
-          echo "$(nproc) thread build."
+          echo -e "$(nproc) thread compile"
           make -j$(nproc) || make -j1 V=s
+          echo "::set-output name=status::success"
 
       - name: Upload bin directory 上传bin文件夹
         uses: actions/upload-artifact@master
+        if: steps.compile.outputs.status == 'success' && env.UPLOAD_BIN_DIR == 'true'
         with:
-          name: OpenWrt_bin bin文件夹
+          name: OpenWrt_directory
           path: openwrt/bin
 
       - name: Organize files 整理文件
+        id: organize
+        if: env.UPLOAD_FIRMWARE == 'true' && !cancelled()
         run: |
           cd openwrt/bin/targets/*/*
           rm -rf packages
           echo "::set-env name=FIRMWARE::$(pwd)"
+          echo "::set-output name=status::success"
 
       - name: Upload firmware 上传固件
         uses: actions/upload-artifact@master
+        if: steps.organize.outputs.status == 'success' && !cancelled()
         with:
-          name: OpenWrt_firmware openwrt固件
+          name: OpenWrt_firmware
           path: ${{ env.FIRMWARE }}
