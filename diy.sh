@@ -23,3 +23,6 @@
 
 #安装feeds
 #cd openwrt && ./scripts/feeds install -a
+git clone https://github.com/Leo-Jo-My/luci-theme-opentomato package/lean/luci-theme-opentomato
+./scripts/feeds update -a
+./scripts/feeds install -a
