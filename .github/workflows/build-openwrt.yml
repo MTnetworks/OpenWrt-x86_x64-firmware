@@ -36,7 +36,7 @@ env:
   SSH_ACTIONS: false
   #上传BIN文件开关false/true
   UPLOAD_BIN_DIR: false
-  #上穿固件文件开关false/true
+  #上传FIRMWARE固件文件开关false/true
   UPLOAD_FIRMWARE: true
   TZ: Asia/Shanghai
 
