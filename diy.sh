@@ -6,7 +6,7 @@
 # Blog: https://p3terx.com
 #=================================================
 # Modify default IP
-#修改默认 IP为192.168.10.1
+#修改默认 IP为192.168.50.5
 #sed -i 's/192.168.1.1/192.168.50.5/g' package/base-files/files/bin/config_generate
 #删除原主题	
 #rm -rf package/lean/luci-theme-argon
