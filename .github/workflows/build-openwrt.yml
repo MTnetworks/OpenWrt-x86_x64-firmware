@@ -46,7 +46,7 @@ jobs:
     if: github.event.repository.owner.id == github.event.sender.id
 
     steps:
-    - name: Checkout 获取源码
+    - name: Checkout 获取当前源码
       uses: actions/checkout@master
 
     - name: Initialization environment 安装编译环境
