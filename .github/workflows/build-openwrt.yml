@@ -67,10 +67,10 @@ jobs:
       - name: Clone source code 抓取仓库
         run: git clone $REPO_URL -b $REPO_BRANCH openwrt
         
-      - name: Update package 添加插件
-        working-directory: ./openwrt
-        run: |            
-          git clone https://github.com/Leo-Jo-My/luci-theme-opentomato package/lean/luci-theme-opentomato  
+#      - name: Update package 添加插件
+#        working-directory: ./openwrt
+#        run: |            
+#          git clone https://github.com/Leo-Jo-My/luci-theme-opentomato package/lean/luci-theme-opentomato  
       
       - name: Update feeds 更新feeds
         run: cd openwrt && ./scripts/feeds update -a
