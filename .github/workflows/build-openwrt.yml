@@ -14,7 +14,7 @@ on:
   push:
     branches:
       - master
-    # 在这里指定你的配置文件名:      
+    # 在下方指定你的配置文件名.config     
     paths:      
       - '.config'
   #取消下方注释 = 每天凌晨4点编译      
@@ -28,9 +28,9 @@ env:
   # 在这里指定你的OpenWrt的仓库地址URL和分支
   REPO_URL: https://github.com/coolsnowwolf/lede
   REPO_BRANCH: master
-  # 在这里指定你的配置文件名:
+  # 在这里指定你的配置文件名.config
   CONFIG_FILE: .config
-  # 编译前运行自定义脚本:
+  # 编译前运行自定义脚本
   DIY_SH: diy.sh
   #SSH开关false/true
   SSH_ACTIONS: false
@@ -46,7 +46,7 @@ jobs:
     if: github.event.repository.owner.id == github.event.sender.id
 
     steps:
-    - name: Checkout 抓取当前仓库
+    - name: Checkout 获取源码
       uses: actions/checkout@master
 
     - name: Initialization environment 安装编译环境
@@ -61,7 +61,7 @@ jobs:
         sudo -E apt-get -qq clean
         curl -fsSL https://raw.githubusercontent.com/P3TERX/dotfiles/master/.bashrc >> ~/.bashrc
 
-    - name: Clone source code 抓取仓库
+    - name: Clone source code 克隆OpenWrt仓库
       run: git clone --depth 1 $REPO_URL -b $REPO_BRANCH openwrt
 
 #    - name: Update package 添加插件
