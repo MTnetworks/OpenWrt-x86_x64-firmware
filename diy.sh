@@ -19,7 +19,7 @@
 
 
 #-更新feeds
-run: cd openwrt && ./scripts/feeds update -a
+#cd openwrt && ./scripts/feeds update -a
 
 #安装feeds
-run: cd openwrt && ./scripts/feeds install -a
+#cd openwrt && ./scripts/feeds install -a
