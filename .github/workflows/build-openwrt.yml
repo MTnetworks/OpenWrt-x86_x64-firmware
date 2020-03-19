@@ -9,9 +9,10 @@
 name: OpenWrt 编译
 
 on:
-  #发布release就编译
+  #取消下方注释 = 发布release就编译
   release:
     types: published
+  #==============================  
   push:
     branches:
       - master
@@ -39,6 +40,7 @@ env:
   UPLOAD_BIN_DIR: false
   #上传FIRMWARE固件文件开关false/true
   UPLOAD_FIRMWARE: true
+  #时区
   TZ: Asia/Shanghai
 
 jobs:
