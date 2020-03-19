@@ -9,6 +9,7 @@
 name: OpenWrt 编译
 
 on:
+  #发布release就编译
   release:
     types: published
   push:
