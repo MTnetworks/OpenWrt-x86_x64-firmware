@@ -18,7 +18,7 @@ on:
       - master
     # 在下方指定你的配置文件名.config     
     paths:      
-      - '.config'
+      - 'IPV4.config'
   #取消下方注释 = 每天凌晨4点编译      
   schedule:
     - cron: 0 20 * * ?
@@ -31,7 +31,7 @@ env:
   REPO_URL: https://github.com/coolsnowwolf/lede
   REPO_BRANCH: master
   # 在这里指定你的配置文件名.config
-  CONFIG_FILE: .config
+  CONFIG_FILE: ipv4.config
   # 编译前运行自定义脚本
   DIY_SH: diy.sh
   #SSH开关false/true
